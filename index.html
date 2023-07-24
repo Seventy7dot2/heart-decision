@@ -71,6 +71,12 @@
   </div>
 
   <script>
+    function handleKeyPress(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        checkHeartRate();
+      }
+    }
     function checkHeartRate() {
       const heartRateInput = document.getElementById('heartRate').value;
       const heartRate = parseInt(heartRateInput);
@@ -88,6 +94,7 @@
         outputElement.textContent = 'Hold on for a while until your heart rate normalizes.';
       }
     }
+    document.getElementById('heartRate').addEventListener('keypress', handleKeyPress);
   </script>
 </body>
 </html>
