@@ -82,7 +82,7 @@
 
       const outputElement = document.getElementById('output');
 
-      if (heartRate < 100) {
+      if (heartRate < 100 && heartRate>60) {
         outputElement.textContent = 'Yes, you can take a decision!';
       } else {
         outputElement.textContent = 'Hold on for a while until your heart rate normalizes.';
