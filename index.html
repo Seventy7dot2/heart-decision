@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heart Rate Decision Maker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f8f8;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007BFF;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .output {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Heart Rate Decision Maker</h1>
+    <label for="heartRate">Enter your heart rate:</label>
+    <input type="number" id="heartRate" placeholder="Enter heart rate in bpm" required>
+    <button onclick="checkHeartRate()">Submit</button>
+    <div class="output" id="output"></div>
+  </div>
+
+  <script>
+    function checkHeartRate() {
+      const heartRateInput = document.getElementById('heartRate').value;
+      const heartRate = parseInt(heartRateInput);
+
+      if (isNaN(heartRate)) {
+        alert('Please enter a valid number for heart rate.');
+        return;
+      }
+
+      const outputElement = document.getElementById('output');
+
+      if (heartRate < 100) {
+        outputElement.textContent = 'Yes, you can take a decision!';
+      } else {
+        outputElement.textContent = 'Hold on for a while until your heart rate normalizes.';
+      }
+    }
+  </script>
+</body>
+</html>
