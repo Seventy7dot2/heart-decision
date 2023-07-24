@@ -29,6 +29,7 @@
       text-align: center;
       margin-bottom: 20px;
       color: #007BFF;
+      transition: color 0.3s;
     }
 
     label {
@@ -51,6 +52,7 @@
       border-radius: 5px;
       cursor: pointer;
       width: 100%;
+      transition: background-color 0.3s;
     }
 
     .output {
@@ -59,14 +61,20 @@
       font-size: 18px;
       font-weight: bold;
     }
+    .red-text {
+      color: #FF0000;
+    }
+    .red-bg {
+      background-color: #FF0000;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Heart Rate Decision Maker</h1>
+    <h1 id="h1">Heart Rate Decision Maker</h1>
     <label for="heartRate">Enter your heart rate:</label>
     <input type="number" id="heartRate" placeholder="Enter heart rate in bpm" required>
-    <button onclick="checkHeartRate()">Submit</button>
+    <button id = "submitBtn" onclick="checkHeartRate()">Submit</button>
     <div class="output" id="output"></div>
   </div>
 
@@ -90,9 +98,24 @@
 
       if (heartRate < 100 && heartRate>60) {
         outputElement.textContent = 'Yes, you can take a decision!';
+        removeRedText();
       } else {
         outputElement.textContent = 'Hold on for a while until your heart rate normalizes.';
+        setRedText();
       }
+    }
+    function setRedText() {
+      const outputElement = document.getElementById('output');
+      outputElement.classList.add('red-text');
+      document.getElementById('h1').classList.add('red-text');
+      document.getElementById('submitBtn').classList.add('red-bg');
+    }
+
+    function removeRedText() {
+      const outputElement = document.getElementById('output');
+      outputElement.classList.remove('red-text');
+      document.getElementById('h1').classList.remove('red-text');
+      document.getElementById('submitBtn').classList.remove('red-bg');
     }
     document.getElementById('heartRate').addEventListener('keypress', handleKeyPress);
   </script>
